@@ -1,17 +1,16 @@
-return {}
---return {
---  'jackMort/ChatGPT.nvim',
---  event = 'VeryLazy',
---  config = function()
---    local home = vim.fn.expand '$HOME'
---    require('chatgpt').setup {
---      api_key_cmd = 'gpg --decrypt ' .. home .. '/chatgpt.gpg',
---    }
---  end,
---  dependencies = {
---    'MunifTanjim/nui.nvim',
---    'nvim-lua/plenary.nvim',
---    'folke/trouble.nvim',
---    'nvim-telescope/telescope.nvim',
---  },
---}
+return {
+  'jackMort/ChatGPT.nvim',
+  event = 'VeryLazy',
+  config = function()
+    local openai_api_key = os.getenv 'OPENAI_API_KEY'
+    require('chatgpt').setup {
+      api_key_cmd = openai_api_key,
+    }
+  end,
+  dependencies = {
+    'MunifTanjim/nui.nvim',
+    'nvim-lua/plenary.nvim',
+    'folke/trouble.nvim',
+    'nvim-telescope/telescope.nvim',
+  },
+}
